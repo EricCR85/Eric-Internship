@@ -57,7 +57,7 @@ const HotCollections = () => {
                 </div>
               </div>
             </div>
-          ))}
+))}
         </div>
       </div>
     </section>
