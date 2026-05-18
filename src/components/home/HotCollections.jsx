@@ -13,7 +13,7 @@ const HotCollections = () => {
     const fetchCollections = async () => {
       try{
         const response = await axios.get(
-          "https://us-centrall-nft-cloud-functions.cloudfunctions.net/hotCollections"
+          "https://us-centrali-nft-cloud-functions.cloudfunctions.net/hotCollections"
         );
         // save array of 6 nft items into state
         setCollections(response.data);
@@ -40,12 +40,12 @@ const HotCollections = () => {
               <div className="nft_coll">
                 <div className="nft_wrap">
                   <Link to="/item-details">
-                    <img src={nftImage} className="lazy img-fluid" alt={nft.title} />
+                    <img src={nft.nftImage} className="lazy img-fluid" alt={nft.title} />
                   </Link>
                 </div>
                 <div className="nft_coll_pp">
                   <Link to="/author">
-                    <img className="lazy pp-coll" src={nft.AuthorImage} alt="" />
+                    <img className="lazy pp-coll" src={nft.authorImage} alt="" />
                   </Link>
                   <i className="fa fa-check"></i>
                 </div>
