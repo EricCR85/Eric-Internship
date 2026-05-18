@@ -10,7 +10,8 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 const HotCollections = () => {
   // // Create the state to store our dynamic collections array
   const [collections, setCollections] = useState([]);
-
+// add loading state 
+const [loading, setLoading] = useState(true);
   // Fetch data from the API endpoint when the component mounts
   useEffect(() => {
     const fetchCollections = async () => {
@@ -20,6 +21,8 @@ const HotCollections = () => {
         );
         // save array of 6 nft items into state
         setCollections(response.data);
+        // turn off loading after data is saved
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching hot collections:", error);
       }
@@ -29,8 +32,7 @@ const HotCollections = () => {
 
   // owl carousel config objects
   const options = {
-    loops: true,
-    infinite: true,
+    loop: true,
     margin: 10,
     nav: true,
     dots: false,
@@ -53,11 +55,33 @@ const HotCollections = () => {
           </div>
 
           <div className="col-lg-12">
-            {/* only render the carousel once our data array has loaded */}
-            {collections.length > 0 && (
+            {/* condition A if loading is true display 4 skeleton placehold */}
+            {loading ? (
+              <div className="d-flex">
+                {[1, 2, 3, 4].map((num) => (
+                  <div className="xol-lg-3 xol-md-6 xol-sm-6 col-xs-12" key={num}>
+                  <div className="nft_coll">
+                  <div className="nft_wrap">
+                    <div style={{ width: "100%", height: "200px", background: "#e0e0e0"
+                    </div>
+                    <div className="nft_coll_pp">
+                      <div style={{ width: "50px", height: "50px", background: "#e0e0e0"}}
+                </div>
+                <div className="nft_coll_info" style={{ marginTop: "15px" }}>
+                  <div style={{ width: "60%", height: "20px", background: "#e0e0e0",
+                    <div style={{ width: "40%", height: "15px", background: "#e0e0e0"}}
+                    </div>
+                    </div>
+                    </div>
+                ))}
+                </div>
+                ) : (
+              // condition B if loading is false mount owl carousel cleanly
+
+            // {collections.length > 0 && (
               <OwlCarousel className="owl-theme" {...options}>
                 {collections.map((nft) => (
-                  <div item key={nft.id}>
+                  <div className="item" key={nft.id}>
                     <div className="nft_coll">
                       <div className="nft_wrap">
                         <Link to="/item-details">
