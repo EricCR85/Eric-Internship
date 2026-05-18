@@ -73,7 +73,7 @@ const [loading, setLoading] = useState(true);
                     </div>
                     </div>
                     </div>
-                ))}
+                ))
                 </div>
                 ) : (
               // condition B if loading is false mount owl carousel cleanly
