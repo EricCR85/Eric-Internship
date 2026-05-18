@@ -59,17 +59,17 @@ const [loading, setLoading] = useState(true);
             {loading ? (
               <div className="d-flex">
                 {[1, 2, 3, 4].map((num) => (
-                  <div className="xol-lg-3 xol-md-6 xol-sm-6 col-xs-12" key={num}>
+                  <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={num}>
                   <div className="nft_coll">
                   <div className="nft_wrap">
-                    <div style={{ width: "100%", height: "200px", background: "#e0e0e0"
+                    <div style={{ width: "100%", height: "200px", background: "#e0e0e0" }}>
                     </div>
                     <div className="nft_coll_pp">
-                      <div style={{ width: "50px", height: "50px", background: "#e0e0e0"}}
+                      <div style={{ width: "50px", height: "50px", background: "#e0e0e0" }}>
                 </div>
                 <div className="nft_coll_info" style={{ marginTop: "15px" }}>
-                  <div style={{ width: "60%", height: "20px", background: "#e0e0e0",
-                    <div style={{ width: "40%", height: "15px", background: "#e0e0e0"}}
+                  <div style={{ width: "60%", height: "20px", background: "#e0e0e0", }}>
+                    <div style={{ width: "40%", height: "15px", background: "#e0e0e0" }}>
                     </div>
                     </div>
                     </div>
