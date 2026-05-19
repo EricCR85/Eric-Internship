@@ -16,7 +16,7 @@ const defaultNewItems = [
     title: "Sample NFT 1",
     price: "0.5",
     likes: 12,
-    expiryDate: "2026-05-20T23:59:59"
+    expiryDate: "2026-05-20T23:59:59",
   },
   {
     id: 2,
@@ -26,21 +26,34 @@ const defaultNewItems = [
     title: "Sample NFT 2",
     price: "1.2",
     likes: 45,
-    expiryDate: "2026-05-21T23:59:59"
-  }
+    expiryDate: "2026-05-21T23:59:59",
+  },
 ];
 
 const getRemainTime = (expiryDate) => {
-  const total = Date.parse(expiryDate) - Date.parse(new Date());
+  const expiry = new Date(expiryDate).getTime();
+  const now = new Date().getTime();
+  const total = expiry - now;
+
+  if (isNaN(expiry) || total <= 0) {
+    return "Expired";
+  }
+
   const seconds = Math.floor((total / 1000) % 60);
   const minutes = Math.floor((total / 1000 / 60) % 60);
   const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+  const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+
+  if (days > 0) {
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
 
   return `${hours}h #{minutes}m ${seconds}s`;
-}
+};
 
 const NewItems = () => {
-  const [newItems, setNewItems] = useState(defaultNewItems);
+  const [newItems, setNewItems] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -138,8 +151,8 @@ const NewItems = () => {
                   <div className="item" key={item.id}>
                     <div className="nft__item">
                       <div className="author_list_pp">
-                        <Link to={`/author/${item.authorId}`}
-                      
+                        <Link
+                          to={`/author/${item.authorId}`}
                           data-bs-toggle="tooltip"
                           data-bs-placement="top"
                           title="Creator: Profile"
@@ -152,13 +165,14 @@ const NewItems = () => {
                           <i className="fa fa-check"></i>
                         </Link>
                       </div>
-                      {item.expiryDate && new Date(item.expiryDate) > new Date() ? (
-                        <div className="de_countdown">{getRemainTime(item.expiryDate)}
-                        </div>
-
-                      ) : (
-                        <div className="de_countdown">Expired</div>
-                      )}
+                      <div
+                        className="de_countdown"
+                        title={`Auction ends: ${new Date(item.expiryDate).toLocaleString()}`}
+                      >
+                        {item.expiryDate
+                          ? getRemainTime(item.expiryDate)
+                          : "Expired"}
+                      </div>
 
                       <div className="nft__item_wrap">
                         <div className="nft__item_extra">
