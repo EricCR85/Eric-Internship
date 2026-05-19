@@ -13,7 +13,7 @@ const defaultNewItems = [
     authorId: 1,
     nftId: 101,
     authorImage: "https://example.com/author1.jpg",
-    title: "Sample NFT 1"
+    title: "Sample NFT 1",
     price: "0.5",
     likes: 12,
     expiryDate: "2026-05-20T23:59:59"
@@ -30,6 +30,14 @@ const defaultNewItems = [
   }
 ];
 
+const getRemainTime = (expiryDate) => {
+  const total = Date.parse(expiryDate) - Date.parse(new Date());
+  const seconds = Math.floor((total / 1000) % 60);
+  const minutes = Math.floor((total / 1000 / 60) % 60);
+  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+
+  return `${hours}h #{minutes}m ${seconds}s`;
+}
 
 const NewItems = () => {
   const [newItems, setNewItems] = useState(defaultNewItems);
@@ -39,12 +47,12 @@ const NewItems = () => {
     const fetchNewItems = async () => {
       try {
         const response = await axios.get(
-          "https://us-central1-nft-cloud-functions.cloudfuntions.net/newItems",
+          "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems",
         );
         setNewItems(response.data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching new items data: ", error);
+        console.error("Error fetching data: ", error);
         setLoading(false);
       }
     };
@@ -144,9 +152,12 @@ const NewItems = () => {
                           <i className="fa fa-check"></i>
                         </Link>
                       </div>
-                      {item.expiryDate && (
-                        <div className="de_countdown">5h 30m 32s</div>
+                      {item.expiryDate && new Date(item.expiryDate) > new Date() ? (
+                        <div className="de_countdown">{getRemainTime(item.expiryDate)}
+                        </div>
 
+                      ) : (
+                        <div className="de_countdown">Expired</div>
                       )}
 
                       <div className="nft__item_wrap">
