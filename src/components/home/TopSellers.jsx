@@ -20,6 +20,7 @@ const TopSellers = () => {
         setLoading(false);
       }
     };
+
     fetchTopSellers();
   }, []);
 
@@ -55,7 +56,11 @@ const TopSellers = () => {
                   <li key={seller.id}>
                     <div className="author_list_pp">
                       <Link to={`/author/${seller.authorId}`}>
-                        <img className="lazy pp-author" src={seller.authorImage} alt="" />
+                        <img
+                          className="lazy pp-author"
+                          src={seller.authorImage}
+                          alt=""
+                        />
                         <i className="fa fa-check"></i>
                       </Link>
                     </div>

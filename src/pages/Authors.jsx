@@ -20,6 +20,7 @@ const Authors = () => {
         setLoading(false);
       }
     };
+
     fetchAuthors();
   }, []);
 
@@ -38,7 +39,10 @@ const Authors = () => {
               </div>
               {loading
                 ? new Array(8).fill(0).map((_, index) => (
-                    <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div
+                      key={index}
+                      className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                    >
                       <div className="nft__item">
                         <div className="author_list_pp">
                           <Skeleton width="50px" height="50px" borderRadius="50%" />
@@ -51,7 +55,10 @@ const Authors = () => {
                     </div>
                   ))
                 : authors.map((author) => (
-                    <div key={author.id} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div
+                      key={author.id}
+                      className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                    >
                       <div className="nft__item">
                         <div className="author_list_pp">
                           <Link to={`/author/${author.id}`}>
