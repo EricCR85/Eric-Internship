@@ -7,9 +7,32 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 // import AuthorImage from "../../images/author_thumbnail.jpg";
 // import nftImage from "../../images/nftImage.jpg";
+const defaultNewItems = [
+  {
+    id: 1,
+    authorId: 1,
+    nftId: 101,
+    authorImage: "https://example.com/author1.jpg",
+    title: "Sample NFT 1"
+    price: "0.5",
+    likes: 12,
+    expiryDate: "2026-05-20T23:59:59"
+  },
+  {
+    id: 2,
+    authorId: 2,
+    authorImage: "https://example.com/author2.jpg",
+    nftImage: "https://example.com/nft2.jpg",
+    title: "Sample NFT 2",
+    price: "1.2",
+    likes: 45,
+    expiryDate: "2026-05-21T23:59:59"
+  }
+];
+
 
 const NewItems = () => {
-  const [newItems, setNewItems] = useState([]);
+  const [newItems, setNewItems] = useState(defaultNewItems);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -107,11 +130,11 @@ const NewItems = () => {
                   <div className="item" key={item.id}>
                     <div className="nft__item">
                       <div className="author_list_pp">
-                        <Link
-                          to="/author"
+                        <Link to={`/author/${item.authorId}`}
+                      
                           data-bs-toggle="tooltip"
                           data-bs-placement="top"
-                          title="Creator: Monica Lucas"
+                          title="Creator: Profile"
                         >
                           <img
                             className="lazy"
@@ -121,7 +144,10 @@ const NewItems = () => {
                           <i className="fa fa-check"></i>
                         </Link>
                       </div>
-                      <div className="de_countdown">5h 30m 32s</div>
+                      {item.expiryDate && (
+                        <div className="de_countdown">5h 30m 32s</div>
+
+                      )}
 
                       <div className="nft__item_wrap">
                         <div className="nft__item_extra">
@@ -142,19 +168,19 @@ const NewItems = () => {
                           </div>
                         </div>
 
-                        <Link to="/item-details">
+                        <Link to={`/item-details/${item.nftId}`}>
                           <img
                             src={item.nftImage}
-                            className="lazy nft__item_preview"
-                            alt=""
+                            className="lazy nft__item_preview img-fluid"
+                            alt={item.title}
                           />
                         </Link>
                       </div>
                       <div className="nft__item_info">
-                        <Link to="/item-details">
+                        <Link to={`/item-details/${item.nftId}`}>
                           <h4>{item.title}</h4>
                         </Link>
-                        <div className="nft__item_price">3.08 ETH</div>
+                        <div className="nft__item_price">{item.price} ETH</div>
                         <div className="nft__item_like">
                           <i className="fa fa-heart"></i>
                           <span>{item.likes}</span>
