@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Skeleton from "../UI/Skeleton";
 
 const Countdown = ({ expiryDate }) => {
@@ -16,9 +16,7 @@ const Countdown = ({ expiryDate }) => {
         setTimeLeft("Expired");
       } else {
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-        );
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
         setTimeLeft(`${days}d ${hours}h ${minutes}m ${seconds}s`);
@@ -31,26 +29,26 @@ const Countdown = ({ expiryDate }) => {
   return <div className="de_countdown">{timeLeft}</div>;
 };
 
-const exploreItems = () => {
+const ExploreItems = () => {
   const [exploreItems, setExploreItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(8);
 
   useEffect(() => {
-    const fetchItems = async () => {
+    const fetchExploreItems = async () => {
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
       );
       setExploreItems(data);
+      setLoading(false)
     };
-    fetcExploreItems();
+    fetchExploreItems();
   }, []);
 
   return (
     <div className="row">
       {exploreItems.slice(0, visibleCount).map((item, index) => (
-        <div
-          key={index}
+        <div key={index}
           className="d-item col-lg-3 cp;-md-6 col-sm-6 col-xs-12"
         >
           <div className="nft_item">
