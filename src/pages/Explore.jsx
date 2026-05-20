@@ -1,30 +1,34 @@
-import React,{ useState, useEffect } from "react";
-import axios from "axios"; 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
+import { data } from "jquery";
 
 const Explore = () => {
   const [items, setItems] = useState([]);
-  const [visibleCount, setVisibleCount] = useState(8); 
+  const [visibleCount, setVisibleCount] = useState(8);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchData();
   }, []);
 
-  
-
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
+        "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
+        console.log(data)
       );
+
       setItems(data);
     } catch (error) {
-      console.error("Error fetching data:", error)
+      console.error("Error fetching data:", error);
+    }
+
+    function newFunction(data) {
+      console.log(data);
     }
   };
-
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
@@ -50,15 +54,17 @@ const Explore = () => {
         <section aria-label="section">
           <div className="container">
             <div className="row">
-            <ExploreItems items={items.slice(0, visibleCount)} />
-            {visibleCount < items.length && (
-              <div className="col-md-12 text-center">
-                <button className="btn-main"
-                onClick={() => setVisibleCount(visibleCount + 4)}
-                >Load More
-                </button>
+              <ExploreItems items={items.slice(0, visibleCount)} />
+              {visibleCount < items.length && (
+                <div className="col-md-12 text-center">
+                  <button
+                    className="btn-main"
+                    onClick={() => setVisibleCount(visibleCount + 4)}
+                  >
+                    Load More
+                  </button>
                 </div>
-            )}
+              )}
             </div>
           </div>
         </section>
