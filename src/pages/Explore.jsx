@@ -12,6 +12,8 @@ const Explore = () => {
     fetchData();
   }, []);
 
+  
+
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
