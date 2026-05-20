@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
 
-const AuthorItems = ({ authorId }) => {
+const AuthorItems = ({ authorItems }) => {
   const [authorItems, setAuthorItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -53,8 +53,8 @@ const AuthorItems = ({ authorId }) => {
                     </div>
                   </div>
                 </div>
-              ))
-            : authorItems.map((item) => (
+              )) :
+              authorItems.map((authorItem) => (
                 <div
                   className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
                   key={item.id}
