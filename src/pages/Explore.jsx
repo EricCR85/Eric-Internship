@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
-import { data } from "jquery";
 
 const Explore = () => {
   const [items, setItems] = useState([]);
@@ -17,18 +16,16 @@ const Explore = () => {
     try {
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
-        console.log(data)
       );
-
+      console.log(data)
+      
       setItems(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-
-    function newFunction(data) {
-      console.log(data);
-    }
   };
+
+  
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
