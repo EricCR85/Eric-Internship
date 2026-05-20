@@ -5,18 +5,18 @@ import Skeleton from "../components/UI/Skeleton";
 import AuthorItems from "../components/author/AuthorItems";
 
 const Author = () => {
-  const { id } = useParams();
+  const { authorId } = useParams();
   const [author, setAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [followers, setFollowers] = useState(0);
   const [isFollowing, setIsFollowing] = useState(false);
 
   useEffect(() => {
-    console.log("ID from URL:", id)
+    console.log("ID from URL:", authorId)
     const fetchAuthor = async () => {
       try {
         const response = await axios.get(
-          `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${id}`
+          `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`
         );
         setAuthor(response.data);
         setFollowers(response.data.followers);
@@ -28,7 +28,7 @@ const Author = () => {
     };
 
     fetchAuthor();
-  }, [id]);
+  }, [authorId]);
 
   const handleFollow = () => {
     if (isFollowing) {
@@ -133,7 +133,7 @@ const Author = () => {
 
                   <div className="col-md-12">
                     <div className="de_tab tab_simple">
-                      <AuthorItems authorId={id}/>
+                      <AuthorItems authorId={authorId}/>
                     </div>
                   </div>
                 </div>
