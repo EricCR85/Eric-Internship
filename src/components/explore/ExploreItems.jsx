@@ -6,7 +6,7 @@ import Skeleton from "../UI/Skeleton";
 const Countdown = ({ expiryDate }) => {
   const [timeLeft, setTimeLeft] = useState("Loading...");
 
-  useEffect(() => {
+
     useEffect(() => {
         const timer = setInterval(() => {
             const now = new Date().getTime();
@@ -28,7 +28,8 @@ const Countdown = ({ expiryDate }) => {
     }, [expiryDate]);
 
     return <div className="de_countdown">{timeLeft}</div>;
-  
+  }
+
 
 const ExploreItems = () => {
   const [exploreItems, setExploreItems] = useState([]);
