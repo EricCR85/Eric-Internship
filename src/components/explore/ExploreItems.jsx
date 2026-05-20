@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
 import { Link } from "react-router-dom";
+// import axios from "axios";
 // import Skeleton from "../UI/Skeleton";
 
 const Countdown = ({ expiryDate }) => {
@@ -33,7 +33,7 @@ const Countdown = ({ expiryDate }) => {
 
 const ExploreItems = ({ items }) => {
   return (
-      <div className="row">
+      
         {items.map((item, index) => (
           <div
             key={index}
@@ -63,40 +63,11 @@ const ExploreItems = ({ items }) => {
               </div>
             </div>
           </div>
-        ))}|
-        </div>
-  );
-};
+  ))}
+)
+}      
+
       
 export default ExploreItems;
 
-    //   {visibleCount < items.length && (
-    //     <div className="col-md-12 text-center"></div>
-    //   )}
-    // </div>
-//   );
-// };
 
-
-  /* <button
-  onClick={() => setVisibleCount(visibleCount + 4)}
-  className="btn-main lead"
->
-Load More
-</button> */
-
-// const [items, setItems] = useState([]);
-// const [loading, setLoading] = useState(true);
-// const [visibleCount, setVisibleCount] = useState(8);
-
-// useEffect(() => {
-
-//   const fetchExploreItems = async () => {
-//     const { data } = await axios.get(
-//       "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
-//     );
-//     setItems(data);
-//     setLoading(false)
-//   };
-//   fetchExploreItems();
-// }, []);
