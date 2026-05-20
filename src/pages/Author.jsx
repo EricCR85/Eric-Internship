@@ -12,6 +12,7 @@ const Author = () => {
   const [isFollowing, setIsFollowing] = useState(false);
 
   useEffect(() => {
+    console.log("ID from URL:", id)
     const fetchAuthor = async () => {
       try {
         const response = await axios.get(
