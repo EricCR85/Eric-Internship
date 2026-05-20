@@ -29,48 +29,48 @@ const Countdown = ({ expiryDate }) => {
   return <div className="de_countdown">{timeLeft}</div>;
 };
 
-const ExploreItems = () => {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [visibleCount, setVisibleCount] = useState(8);
+const ExploreItems = ({ items }) => {
+  // const [items, setItems] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [visibleCount, setVisibleCount] = useState(8);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const fetchExploreItems = async () => {
-      const { data } = await axios.get(
-        "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
-      );
-      setItems(data);
-      setLoading(false)
-    };
-    fetchExploreItems();
-  }, []);
+  //   const fetchExploreItems = async () => {
+  //     const { data } = await axios.get(
+  //       "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
+  //     );
+  //     setItems(data);
+  //     setLoading(false)
+  //   };
+  //   fetchExploreItems();
+  // }, []);
 
   return (
     <div className="row">
       {loading ? (
         <div className="text-center">Loading...</div>
       ) : (
-      items.slice(0, visibleCount).map((item, index) => (
+      items.map((item, index) => (
         <div key={index} className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
         
-          <div className="nft_item">
+          <div className="nft__item">
             <div className="author_list_pp">
               <Link to={`/author/${item.authorId}`}>
               <img src={item.authorImage} alt="" />
               </Link>
               </div>
             <Countdown expiryDate={item.expiryDate} />
-            <div className="nft_item_wrap">
+            <div className="nft__item_wrap">
               <Link to={`/item-details/${item.nftId}`}>
-            <img src={item.nftImage} className="lazy nft_item_preview" alt="" />
+            <img src={item.nftImage} className="lazy nft__item_preview" alt="" />
               </Link>
               </div>
-            <div className="nft_item_info">
+            <div className="nft__item_info">
               <Link to={`/item-details/${item.nftId}`}>
               <h4>{item.title}</h4>
               </Link>
-              <div className="nft_item_price">{item.price} ETH</div>
+              <div className="nft__item_price">{item.price} ETH</div>
               
             </div>
           </div>
@@ -80,12 +80,12 @@ const ExploreItems = () => {
       
       {visibleCount < items.length && (
         <div className="col-md-12 text-center">
-          <button
+          {/* <button
             onClick={() => setVisibleCount(visibleCount + 4)}
             className="btn-main lead"
           >
             Load More
-          </button>
+          </button> */}
         </div>
       )}
     </div>
