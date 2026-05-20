@@ -30,16 +30,17 @@ const Countdown = ({ expiryDate }) => {
 };
 
 const ExploreItems = () => {
-  const [exploreItems, setExploreItems] = useState([]);
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(8);
 
   useEffect(() => {
+
     const fetchExploreItems = async () => {
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
       );
-      setExploreItems(data);
+      setItems(data);
       setLoading(false)
     };
     fetchExploreItems();
@@ -47,25 +48,37 @@ const ExploreItems = () => {
 
   return (
     <div className="row">
-      {exploreItems.slice(0, visibleCount).map((item, index) => (
-        <div key={index}
-          className="d-item col-lg-3 cp;-md-6 col-sm-6 col-xs-12"
-        >
+      {loading ? (
+        <div className="text-center">Loading...</div>
+      ) : (
+      items.slice(0, visibleCount).map((item, index) => (
+        <div key={index} className="d-item col-lg-3 cp;-md-6 col-sm-6 col-xs-12">
+        
           <div className="nft_item">
             <div className="author_list_pp">
-              <img src="{item.authorImage" alt="" />
+              <Link to={`/author/${item.authorId}`}>
+              <img src={item.authorImage} alt="" />
+              </Link>
               </div>
             <Countdown expiryDate={item.expiryDate} />
+            <div className="nft_item_wrap">
+              <Link to={`/item-details/${item.id}`}>
             <img src={item.nftImage} className="lazy nft_item_preview" alt="" />
+              </Link>
+              </div>
             <div className="nft_item_info">
+              <Link to={`/item-details/${item.id}`}>
               <h4>{item.title}</h4>
+              </Link>
               <div className="nft_item_price">{item.price} ETH</div>
+              
             </div>
           </div>
         </div>
-      ))}
+      ))
+    )}
       ;
-      {visibleCount < exploreItems.length && (
+      {visibleCount < items.length && (
         <div className="col-md-12 text-center">
           <button
             onClick={() => setVisibleCount(visibleCount + 4)}
