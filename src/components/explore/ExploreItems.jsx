@@ -64,7 +64,7 @@ const ExploreItems = () => {
   </div>
     ))}
 
-    {!loading && explorItems.slice(0, visivleCount).map((item, index) =>(
+    {!loading && exploreItems.slice(0, visibleCount).map((item, index) =>(
       <div key={index} className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
         <div className="nft_item_info">
           <h4>{item.title}</h4>
@@ -73,7 +73,7 @@ const ExploreItems = () => {
         </div>
     ))}
 
-    {visibleCount < exploreItem.length && (
+    {visibleCount < exploreItems.length && (
       <div className="col-md-12 text-center">
         <button onClick={loadMore} className="btn-main lead">
           Load More
