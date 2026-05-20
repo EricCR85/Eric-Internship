@@ -52,7 +52,7 @@ const ExploreItems = () => {
         <div className="text-center">Loading...</div>
       ) : (
       items.slice(0, visibleCount).map((item, index) => (
-        <div key={index} className="d-item col-lg-3 col;-md-6 col-sm-6 col-xs-12">
+        <div key={index} className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
         
           <div className="nft_item">
             <div className="author_list_pp">
@@ -77,7 +77,7 @@ const ExploreItems = () => {
         </div>
       ))
     )}
-      ;
+      
       {visibleCount < items.length && (
         <div className="col-md-12 text-center">
           <button
