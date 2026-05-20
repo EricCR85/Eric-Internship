@@ -33,7 +33,7 @@ const Countdown = ({ expiryDate }) => {
 
 const ExploreItems = ({ items }) => {
   return (
-      
+      <>
         {items.map((item, index) => (
           <div
             key={index}
@@ -64,6 +64,7 @@ const ExploreItems = ({ items }) => {
             </div>
           </div>
   ))}
+  </>
 )
 }      
 
