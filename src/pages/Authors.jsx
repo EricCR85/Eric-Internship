@@ -14,7 +14,7 @@ const Authors = () => {
           "https://us-central1-nft-cloud-functions.cloudfunctions.net/authors"
         );
         console.log(response.data);
-        setAuthors(response.data);
+        setAuthors(Array.isArray(response.data) ? response.data : response.data.authors || []);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching authors:", error);

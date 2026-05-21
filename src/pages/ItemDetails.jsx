@@ -21,7 +21,7 @@ const ItemDetails = () => {
         setItemData(data);
       } catch (error) {
         console.error("Error fetching item details:", error);
-        } finally {
+      } finally {
         setLoading(false);
       }
     };
@@ -50,9 +50,10 @@ const ItemDetails = () => {
                       <Skeleton width="80px" height="25px" borderRadius="4px" />
                       <Skeleton width="80px" height="25px" borderRadius="4px" />
                     </div>
-                    <p>
+                    <div>
                       <Skeleton width="100%" height="80px" />
-                    </p>
+                    </div>
+
                     <div className="d-flex flex-row">
                       <div className="mr40">
                         <h6>Owner</h6>
