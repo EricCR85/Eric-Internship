@@ -82,8 +82,6 @@ const ItemDetails = () => {
                       </div>
                       </div>
                       </div>
-                      </div>
-                      </div>
                       </section>
                       </div>
                       </div>
@@ -165,14 +163,12 @@ return (
             </div>
             </div>
             </div>
+      </section>
             </div>
             </div>
           
-        
-      </section>
-    </div>
-  </div>
-)
-  }
+);
+    
+  },
 
-  export default ItemDetails
+  export default ItemDetails;
