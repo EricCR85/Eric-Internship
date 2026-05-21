@@ -57,7 +57,7 @@ const Authors = () => {
                   ))
                 : authors.map((author) => (
                     <div
-                      key={author.authorid}
+                      key={author.authorId}
                       className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
                     >
                       <div className="nft__item">
