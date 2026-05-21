@@ -80,7 +80,7 @@ const Explore = () => {
                     <option value="price_high_to_low">
                       Price, High to Low
                     </option>
-                    <option value="Likes_high_to_low">Most Liked</option>
+                    <option value="likes_high_to_low">Most Liked</option>
                   </select>
                 </div>
               </div>
