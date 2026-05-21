@@ -27,7 +27,7 @@ const Author = () => {
         setLoading(false);
       }
     };
-
+    
     if (authorId) {
       fetchAuthor();
     }

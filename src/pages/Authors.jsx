@@ -13,6 +13,7 @@ const Authors = () => {
         const response = await axios.get(
           "https://us-central1-nft-cloud-functions.cloudfunctions.net/authors"
         );
+        console.log(response.data);
         setAuthors(response.data);
         setLoading(false);
       } catch (error) {
@@ -20,7 +21,7 @@ const Authors = () => {
         setLoading(false);
       }
     };
-
+    
     fetchAuthors();
   }, []);
 
