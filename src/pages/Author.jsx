@@ -9,7 +9,7 @@ const Author = () => {
   const { authorId } = useParams();
   const [author, setAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [followers, setFollowers] = useState(0);
+  // const [followers, setFollowers] = useState(0);
   const [isFollowing, setIsFollowing] = useState(false);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Author = () => {
     };
 
     if (authorId) {
-      fetchAuthorData();
+      fetchAuthor();
     }
   }, [authorId]);
 
