@@ -6,28 +6,7 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-// const defaultNewItems = [
-//   {
-//     id: 1,
-//     authorId: 1,
-//     nftId: 101,
-//     authorImage: "https://example.com/author1.jpg",
-//     title: "Sample NFT 1",
-//     price: "0.5",
-//     likes: 12,
-//     expiryDate: "2026-05-20T23:59:59",
-//   },
-//   {
-//     id: 2,
-//     authorId: 2,
-//     authorImage: "https://example.com/author2.jpg",
-//     nftImage: "https://example.com/nft2.jpg",
-//     title: "Sample NFT 2",
-//     price: "1.2",
-//     likes: 45,
-//     expiryDate: "2026-05-21T23:59:59",
-//   },
-// ];
+
 
 const getRemainTime = (expiryDate) => {
   const expiry = new Date(expiryDate).getTime();
@@ -56,13 +35,12 @@ const NewItems = () => {
 
   const handleBuyNow = (item) => {
     alert(`Buy Now click for: ${item.title} (ID: ${item.nftId || item.id})`);
-  }
+  };
 
   const handleShare = (platform, item) => {
     alert(`Sharing ${item.title} on ${platform}`);
-  }
+  };
 
-  
   useEffect(() => {
     const fetchNewItems = async () => {
       try {
@@ -184,22 +162,28 @@ const NewItems = () => {
                       <div className="nft__item_wrap">
                         <div className="nft__item_extra">
                           <div className="nft__item_buttons">
-                            <button onClick={() => handleBuyNow(item)}>Buy Now</button>
+                            <button onClick={() => handleBuyNow(item)}>
+                              Buy Now
+                            </button>
                             <div className="nft__item_share">
                               <h4>Share</h4>
-                              <button 
-                              target="_blank" 
-                              rel="noreferrer"
-                              onClick={() => handleShare("Facebook", item)}>
+                              <button
+                                target="_blank"
+                                rel="noreferrer"
+                                onClick={() => handleShare("Facebook", item)}
+                              >
                                 <i className="fa fa-facebook fa-lg"></i>
                               </button>
-                              <button 
-                              target="_blank" 
-                              rel="noreferrer"
-                              onClick={() => handleShare("twitter", item)}>
+                              <button
+                                target="_blank"
+                                rel="noreferrer"
+                                onClick={() => handleShare("twitter", item)}
+                              >
                                 <i className="fa fa-twitter fa-lg"></i>
                               </button>
-                              <button onClick={() => handleShare("Email", item)}>
+                              <button
+                                onClick={() => handleShare("Email", item)}
+                              >
                                 <i className="fa fa-envelope fa-lg"></i>
                               </button>
                             </div>
