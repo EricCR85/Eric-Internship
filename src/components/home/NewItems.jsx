@@ -5,30 +5,29 @@ import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-// import AuthorImage from "../../images/author_thumbnail.jpg";
-// import nftImage from "../../images/nftImage.jpg";
-const defaultNewItems = [
-  {
-    id: 1,
-    authorId: 1,
-    nftId: 101,
-    authorImage: "https://example.com/author1.jpg",
-    title: "Sample NFT 1",
-    price: "0.5",
-    likes: 12,
-    expiryDate: "2026-05-20T23:59:59",
-  },
-  {
-    id: 2,
-    authorId: 2,
-    authorImage: "https://example.com/author2.jpg",
-    nftImage: "https://example.com/nft2.jpg",
-    title: "Sample NFT 2",
-    price: "1.2",
-    likes: 45,
-    expiryDate: "2026-05-21T23:59:59",
-  },
-];
+
+// const defaultNewItems = [
+//   {
+//     id: 1,
+//     authorId: 1,
+//     nftId: 101,
+//     authorImage: "https://example.com/author1.jpg",
+//     title: "Sample NFT 1",
+//     price: "0.5",
+//     likes: 12,
+//     expiryDate: "2026-05-20T23:59:59",
+//   },
+//   {
+//     id: 2,
+//     authorId: 2,
+//     authorImage: "https://example.com/author2.jpg",
+//     nftImage: "https://example.com/nft2.jpg",
+//     title: "Sample NFT 2",
+//     price: "1.2",
+//     likes: 45,
+//     expiryDate: "2026-05-21T23:59:59",
+//   },
+// ];
 
 const getRemainTime = (expiryDate) => {
   const expiry = new Date(expiryDate).getTime();
@@ -43,7 +42,6 @@ const getRemainTime = (expiryDate) => {
   const minutes = Math.floor((total / 1000 / 60) % 60);
   const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
   const days = Math.floor(total / (1000 * 60 * 60 * 24));
-
 
   if (days > 0) {
     return `${days}d ${hours}h ${minutes}m ${seconds}s`;
@@ -180,15 +178,15 @@ const NewItems = () => {
                             <button>Buy Now</button>
                             <div className="nft__item_share">
                               <h4>Share</h4>
-                              <a href="" target="_blank" rel="noreferrer">
+                              <button target="_blank" rel="noreferrer">
                                 <i className="fa fa-facebook fa-lg"></i>
-                              </a>
-                              <a href="" target="_blank" rel="noreferrer">
+                              </button>
+                              <button target="_blank" rel="noreferrer">
                                 <i className="fa fa-twitter fa-lg"></i>
-                              </a>
-                              <a href="">
+                              </button>
+                              <button>
                                 <i className="fa fa-envelope fa-lg"></i>
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </div>
