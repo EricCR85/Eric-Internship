@@ -28,7 +28,7 @@ const Home = () => {
       <div data-aos="fade-up">
         <TopSellers />
       </div>
-      <div data-aos="fade-up">
+      <div data-aos="fade-left">
         <BrowseByCategory />
       </div>
     </div>
