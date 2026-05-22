@@ -54,6 +54,15 @@ const NewItems = () => {
   const [newItems, setNewItems] = useState();
   const [loading, setLoading] = useState(true);
 
+  const handleBuyNow = (item) => {
+    alert(`Buy Now click for: ${item.title} (ID: ${item.nftId || item.id})`);
+  }
+
+  const handleShare = (platform, item) => {
+    alert(`Sharing ${item.title} on ${platform}`);
+  }
+
+  
   useEffect(() => {
     const fetchNewItems = async () => {
       try {
@@ -175,16 +184,22 @@ const NewItems = () => {
                       <div className="nft__item_wrap">
                         <div className="nft__item_extra">
                           <div className="nft__item_buttons">
-                            <button>Buy Now</button>
+                            <button onClick={() => handleBuyNow(item)}>Buy Now</button>
                             <div className="nft__item_share">
                               <h4>Share</h4>
-                              <button target="_blank" rel="noreferrer">
+                              <button 
+                              target="_blank" 
+                              rel="noreferrer"
+                              onClick={() => handleShare("Facebook", item)}>
                                 <i className="fa fa-facebook fa-lg"></i>
                               </button>
-                              <button target="_blank" rel="noreferrer">
+                              <button 
+                              target="_blank" 
+                              rel="noreferrer"
+                              onClick={() => handleShare("twitter", item)}>
                                 <i className="fa fa-twitter fa-lg"></i>
                               </button>
-                              <button>
+                              <button onClick={() => handleShare("Email", item)}>
                                 <i className="fa fa-envelope fa-lg"></i>
                               </button>
                             </div>
