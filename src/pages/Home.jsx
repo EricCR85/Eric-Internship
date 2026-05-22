@@ -11,32 +11,28 @@ const Home = () => {
     window.scrollTo(0, 0);
   }, []);
 
-
-  function Home() {
-    return (
-      <div className="mainBody">
-          <div data-aos="fade-up">
-            <Landing />
-          </div>
-          <div data-aos="fade-up">
-            <LandingIntro />
-          </div>
-          <div data-aos="fade-up">
-            <HotCollections />
-          </div>
-          <div data-aos="fade-up">
-            <NewItems />
-          </div>
-          <div data-aos="fade-up">
-            <TopSellers />
-          </div>
-          <div data-aos="fade-up">
-            <BrowseByCategory />
-          </div>
-        </div>
-    
-    );
-  }
+  return (
+    <div className="mainBody">
+      <div data-aos="fade-up">
+        <Landing />
+      </div>
+      <div data-aos="fade-up">
+        <LandingIntro />
+      </div>
+      <div data-aos="fade-up">
+        <HotCollections />
+      </div>
+      <div data-aos="fade-up">
+        <NewItems />
+      </div>
+      <div data-aos="fade-up">
+        <TopSellers />
+      </div>
+      <div data-aos="fade-up">
+        <BrowseByCategory />
+      </div>
+    </div>
+  );
 };
 
 export default Home;

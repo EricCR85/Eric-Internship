@@ -2,14 +2,21 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Explore = () => {
   const [items, setItems] = useState([]);
   const [visibleCount, setVisibleCount] = useState(8);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchData();
+    AOS.init({
+      duration: 1000,
+      once: true,
+    })
   }, []);
 
   const fetchData = async (filterValue) => {
