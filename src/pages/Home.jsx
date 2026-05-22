@@ -5,6 +5,7 @@ import Landing from "../components/home/Landing";
 import LandingIntro from "../components/home/LandingIntro";
 import NewItems from "../components/home/NewItems";
 import TopSellers from "../components/home/TopSellers";
+import Explore from "./Explore";
 
 const Home = () => {
   useEffect(() => {
@@ -30,6 +31,9 @@ const Home = () => {
       </div>
       <div data-aos="fade-left">
         <BrowseByCategory />
+      </div>
+      <div data-aos="fade-up">
+        <Explore />
       </div>
     </div>
   );
