@@ -211,7 +211,7 @@ const NewItems = () => {
                     </div>
                   </div>
                 ))}
-              </OwlCarousel>
+              </OwlCarousel>  //
             )}
           </div>
         </div>
