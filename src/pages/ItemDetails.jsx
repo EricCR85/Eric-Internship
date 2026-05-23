@@ -54,9 +54,9 @@ const ItemDetails = () => {
                       <Skeleton width="100%" height="80px" />
                     </div>
 
+                        <h6>Owner</h6>
                     <div className="d-flex flex-row">
                       <div className="mr40">
-                        <h6>Owner</h6>
                         <div className="item_author">
                           <div className="author_list_pp">
                             <Skeleton
@@ -125,9 +125,9 @@ const ItemDetails = () => {
                     {itemData.likes}
                   </div>
                 </div>
-                <p>{itemData.description}</p>
                 <div className="d-flex flex-row">
                   <div className="item_author">
+                <p>{itemData.description}</p>
                     <div className="author_list_pp">
                       <Link to={`/author/${itemData.ownerId}`}>
                         <img
@@ -142,11 +142,11 @@ const ItemDetails = () => {
                       <Link to={`/author/${itemData.ownerId}`}>
                         {itemData.ownerName}
                       </Link>
+                  <h6>Creator</h6>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <h6>Creator</h6>
                   <div className="item_author">
                     <div className="author_list_pp">
                       <Link to={`/author/${itemData.creatorId}`}>
